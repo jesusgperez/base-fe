@@ -46,11 +46,11 @@ const MultiSelect = ({dataList, selectedOuter, setSelectedOuter, errors, placeho
           />
           {dataList.map((data) => (
             <ListItem 
-            key={data.tag}
-            data={data.name}
-            show={compareNames(data.name)}
-            selected={selected.map(obj => obj.tag).includes(data.tag)}
-            onClick={() => onClickListItem(data)}
+              key={data.tag}
+              data={data.name}
+              show={compareNames(data.name)}
+              selected={selected.map(obj => obj.tag).includes(data.tag)}
+              onClick={() => onClickListItem(data)}
             />
           )
         )}
