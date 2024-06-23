@@ -21,7 +21,7 @@ const CheckBoxGroup = (props: CheckBoxGroupProps) => {
   const hasError = props.errors ? props.errors.hasError : false
 
   return (
-    <div className={`border border-4 border-pmiMediumPurple rounded-lg flex space-x-5 px-2 py-2 bg-pmiDarkPurple ${props.containerStyles} h-12 md:h-9 items-center justify-center`}>
+    <div className={`border border-4 border-secondary rounded-lg flex space-x-5 px-2 py-2 bg-primary ${props.containerStyles} h-12 md:h-9 items-center justify-center`}>
 
       <div className="flex flex-col">
         <h3 className={`text-md text-white text-xs ${props.title ? '' : 'hidden' }`}>

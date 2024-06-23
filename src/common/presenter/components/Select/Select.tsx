@@ -36,7 +36,7 @@ const Select = ({dataList, setSelectedOuter, errors, placeholder, containerStyle
         placeholder={placeholder}
       />
 
-      <ul className={`absolute w-full bg-pmiMediumPurple text-white overflow-y-auto max-h-60 ${!open && 'hidden'} border border-black z-10`}>
+      <ul className={`absolute w-full bg-secondary text-white overflow-y-auto max-h-60 ${!open && 'hidden'} border border-black z-10`}>
         <ListSearch
           value={searchValue}
           setValue={setSearchValue}
