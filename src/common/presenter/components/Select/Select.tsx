@@ -7,23 +7,41 @@ import { ListSearch } from "./ListSearch"
 import { TopItem } from "./TopItem"
 
 
-const Select = ({dataList, setSelectedOuter, errors, placeholder, containerStyles}: SelectProps) => {
+const Select = ({
+  dataList, selectedOuter, setSelectedOuter, errors,
+  placeholder, containerStyles, multiple = false
+}: SelectProps) => {
+
   const [ searchValue, setSearchValue ] = useState<string>('')
-  const [ selected, setSelected ] = useState<IAssetEntity>({name: '', tag: ''})
+  const [ selected, setSelected ] = useState<IAssetEntity[]>([])
   const [ open, setOpen ] = useState<boolean>(false)
 
   const compareNames = (name: string): boolean => {
     return normalizeText(name).startsWith(searchValue)
   }
 
+  const deleteSelectionMultiple = (data: IAssetEntity) => {
+    setSelected(selected.filter(obj => obj.tag !== data.tag))
+    selectedOuter?.delete(data.tag)
+    setSelectedOuter?(new Set(selectedOuter)) : ''
+  }
+
   const onClickListItem = (data: IAssetEntity) => {
-    if (data.tag !== selected.tag) {
-      setSelected(data)
-      setSearchValue('')
-      setSelectedOuter ? setSelectedOuter(data) : ''
-      setOpen(false)
-      setSearchValue('')
+    if (!selected.map(obj => obj.tag).includes(data.tag)) {
+      if (multiple) {
+        selected.push(data)
+        setSelected(selected.filter(obj => obj))
+        setSelectedOuter?(new Set(selectedOuter?.add(data.tag))) : ''
+        return
+      }
+
+      setSelected([data])
+      setSelectedOuter?(new Set([data])) : ''
+    } else {
+      deleteSelectionMultiple(data)
     }
+
+    setSearchValue('')
   }
 
   return (
@@ -46,12 +64,23 @@ const Select = ({dataList, setSelectedOuter, errors, placeholder, containerStyle
               key={data.tag}
               data={data.name}
               show={compareNames(data.name)}
-              selected={data.tag === selected.tag}
+              selected={selected.map(obj => obj.tag).includes(data.tag)}
               onClick={() => onClickListItem(data)}
             />
           )
         )}
+          {
+            multiple && <button
+              className="w-full sticky bottom-0 text-primary bg-orange-200 hover:scale-105"
+              onClick={() => setOpen(!open)}
+            >
+              Cerrar
+            </button>
+          }
       </ul>
+        {multiple && <p className="text-white text-xs">
+          *Seleciona varios
+        </p>}
     </div>
   )
 }

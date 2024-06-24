@@ -13,9 +13,9 @@ const TopItem = ({open, selected, setOpen, errors, placeholder} : TopItemProps) 
     <div className="flex flex-col">
       <div
         onClick={() => setOpen(!open)}
-        className={`w-full p-2 flex items-center justify-between text-sm rounded-md bg-secondary ${!selected.tag && 'text-gray-400 text-xs' || 'text-white text-sm'} ${open && 'rounded-none rounded-t-md' || ''}`}
+        className={`w-full p-2 flex items-center justify-between text-sm rounded-md bg-secondary ${!selected.length && 'text-gray-400 text-xs' || 'text-white text-sm'} ${open && 'rounded-none rounded-t-md' || ''}`}
       >
-        {selected.name ? shortenName(selected.name) : placeholder}
+        {selected.length ? selected.map(obj => shortenName(obj.name)).join(', ') : placeholder}
 
         <BiChevronDown 
           size={20}

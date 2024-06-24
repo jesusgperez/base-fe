@@ -3,10 +3,12 @@ import { IAssetEntity, IError } from "../../../domain/models"
 
 export type SelectProps = {
   dataList: IAssetEntity[],
-  setSelectedOuter?: React.Dispatch<React.SetStateAction<IAssetEntity>>,
+  selectedOuter?: Set<string>,
+  setSelectedOuter?: React.Dispatch<React.SetStateAction<Set<string>>>,
   errors?: IError,
   placeholder: string,
-  containerStyles?: string
+  containerStyles?: string,
+  multiple?: boolean
 }
 
 
@@ -26,7 +28,7 @@ export type ListSearchProps = {
 
 export type TopItemProps = {
   open: boolean,
-  selected: IAssetEntity,
+  selected: IAssetEntity[],
   setOpen: React.Dispatch<React.SetStateAction<boolean>>,
   errors?: IError,
   placeholder: string
