@@ -7,7 +7,8 @@ export type ModalProps = {
   title: string,
   content: string,
   open: boolean,
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+  onExit: () => void,
+  onContinue?: () => void,
   type?: string
 }
 

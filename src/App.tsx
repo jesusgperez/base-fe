@@ -9,10 +9,11 @@ function App() {
     <>
       <Modal
         title='Hello world'
-        content='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi eveniet eius excepturi harum tempora dolor id soluta, quibusdam provident aliquid natus autem doloribus veritatis voluptatibus repudiandae voluptatem nam voluptate itaque.'
+        content='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi eveniet eius excepturi harum tempora dolor id soluta.'
         open={open}
-        setOpen={setOpen}
-        type={ModalTypes.base}
+        onExit={() => {setOpen(false)}}
+        onContinue={() => {setOpen(false)}}
+        type={ModalTypes.continue}
       />
     </>
   )
