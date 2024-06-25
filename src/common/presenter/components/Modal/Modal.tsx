@@ -6,7 +6,7 @@ import { ModalContinueAction } from "./ModalContinueAction"
 
 const Modal = ({title, content, type, open, setOpen}: ModalProps) => {
   const renderActions = () => {
-    if (type == ModalTypes.continue) {
+    if (type === ModalTypes.continue) {
       return <ModalContinueAction
         onExit={() => {setOpen(false)}}
         onContinue={() => {setOpen(false)}}
