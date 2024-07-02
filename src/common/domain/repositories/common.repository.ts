@@ -1,6 +1,6 @@
-import { IUserEntity } from "../models"
+import { ITokenEntity } from "../models"
 
 export interface ICommonRepository {
   // Write your functions interface
-  refreshToken(): Promise<IUserEntity>;
+
 }
