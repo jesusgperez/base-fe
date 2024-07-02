@@ -1,4 +1,6 @@
 export * from './entity/IAsset.entity'
 export * from './entity/IError.entity'
 export * from './entity/User.entity'
-export * from './entity/HttpMethod.entity'
+export * from './interfaces/IHttpMethod.interface'
+export * from './interfaces/IUseLocalStorage.interface'
+export * from './entity/IToken.entity'
