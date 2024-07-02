@@ -49,13 +49,12 @@ export class AuthRepository implements IAuthRepository {
         body: {...sendData},
         url: `${API_URL}/tkauth/token/`
       })
-  
+
       return TokenAdapter.TokenDtoToTokenEntity(response)
     } catch (error: unknown) {
       const err = error as AxiosError
       const data = err.response!.data
       throw {message: data}
     }
-    
   }
 }
