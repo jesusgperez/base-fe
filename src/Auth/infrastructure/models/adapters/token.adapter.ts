@@ -5,7 +5,7 @@ export class TokenAdapter {
   static TokenDtoToTokenEntity(token: ITokenDto): ITokenEntity {
     return {
       accessToken: token.access,
-      refreshToken: token.access,
+      refreshToken: token.refresh,
     }
   }
 

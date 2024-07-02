@@ -1,4 +1,4 @@
-import { ITokenEntity } from "../../domain/models";
+import { ILoginEntity, ITokenEntity } from "../../domain/models";
 import { ITokenDto } from "../models/dto";
 import { TokenAdapter } from "../models/adapters";
 import { IHttp } from "../../../common/domain/repositories";
@@ -7,6 +7,7 @@ import { getEnvironments } from "../../../helpers";
 import { Method } from "axios";
 import { HttpMethod } from "../../../common/infrastructure/models/interfaces";
 import { AxiosError } from "axios";
+import { LoginAdapter } from "../models/adapters/login.adapter";
 
 const API_URL = getEnvironments().VITE_API_URL
 
@@ -23,7 +24,7 @@ export class AuthRepository implements IAuthRepository {
         body: {
           refresh: refreshToken
         },
-        url: `${API_URL}/token/refresh/`
+        url: `${API_URL}/tkauth/token/refresh/`
       })
 
       return TokenAdapter.TokenDtoToTokenEntity({
@@ -33,8 +34,28 @@ export class AuthRepository implements IAuthRepository {
     } catch (error: unknown) {
       const err = error as AxiosError
       const data = err.response!.data
-      // Pop up the error message
       throw {message: data}
     }
+  }
+
+  async loginUser(loginData: ILoginEntity): Promise<ITokenEntity> {
+    try {
+      const sendData = LoginAdapter.LoginEntityToLoginDto(loginData)
+
+      const response = await this.http.request<ITokenDto>({
+        method: HttpMethod.post as Method,  
+        headers: {},
+        params: {},
+        body: {...sendData},
+        url: `${API_URL}/tkauth/token/`
+      })
+  
+      return TokenAdapter.TokenDtoToTokenEntity(response)
+    } catch (error: unknown) {
+      const err = error as AxiosError
+      const data = err.response!.data
+      throw {message: data}
+    }
+    
   }
 }
