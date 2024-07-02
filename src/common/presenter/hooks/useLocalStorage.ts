@@ -17,5 +17,4 @@ const useLocalStorage = (): IUseLocalStorage => {
   }
 }
 
-
 export { useLocalStorage }
