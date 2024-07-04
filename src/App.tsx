@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom'
 import { GlobalProvider } from './common/presenter/contexts/global'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import Login from './Auth/presenter/pages'
 
 
 const queryClient = new QueryClient()
@@ -14,7 +15,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Navigate to='/login'/>}/>
-            <Route path='/login' element={<></>}/>
+            <Route path='/login' element={<Login/>}/>
             <Route path='/home' element={<h1>This is the home</h1>}/>
           </Routes>
         </BrowserRouter>
