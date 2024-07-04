@@ -1,11 +1,12 @@
+import { useContext } from "react"
 import { LoginProps } from "./models"
-import AuthProvider from "../../contexts/Provider"
+import AuthContext from "../../contexts/Context"
 
 const Component = ({}: LoginProps) => {
+  const { setLoginData } = useContext(AuthContext)
+
   return (
-    <AuthProvider>
       <h1>Hello world</h1>
-    </AuthProvider>
   )
 }
 

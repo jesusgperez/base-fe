@@ -1,11 +1,10 @@
 import { useState } from "react";
 import AuthContext from "./Context";
-import {
-  AuthContextProps, AuthProviderProps, ILoginData, EmptyLoginData
-} from "./models";
+import { AuthContextProps, AuthProviderProps } from "./models";
+import { ILoginEntity, EmptyLoginEntity } from "../../domain/models";
 
 const AuthProvider = ({children}: AuthProviderProps) => {
-  const [ loginData, setLoginData ] = useState<ILoginData>(EmptyLoginData)
+  const [ loginData, setLoginData ] = useState<ILoginEntity>(EmptyLoginEntity)
 
   const defaultAuthContext: AuthContextProps = {
     loginData,

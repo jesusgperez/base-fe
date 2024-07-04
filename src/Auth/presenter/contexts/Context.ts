@@ -1,9 +1,9 @@
 import { createContext } from "react";
 import { AuthContextProps } from "./models";
-import { EmptyLoginData } from "./models";
+import { EmptyLoginEntity } from "../../domain/models";
 
 const AuthContext = createContext<AuthContextProps>({
-  loginData: EmptyLoginData,
+  loginData: EmptyLoginEntity,
   setLoginData: () => {}
 })
 
