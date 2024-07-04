@@ -1,1 +1,1 @@
-export { default } from './Compound'
+export { default } from './Presenter'

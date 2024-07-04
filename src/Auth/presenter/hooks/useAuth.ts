@@ -9,7 +9,6 @@ import { IDecodedTokenDto } from '../../infrastructure/models/dto'
 
 const useAuth = async () => {
   const {
-    user,
     setUser
   } = useContext(GlobalContext)
   const navigate = useNavigate()
