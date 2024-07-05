@@ -2,7 +2,7 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{ts,tsx}"
+    "./src/**/*.{ts,tsx,svg}"
   ],
   theme: {
     extend: {
@@ -14,6 +14,9 @@ export default {
         selection: "#166bac"
       }
     },
+    backgroundImage: (theme) => ({
+      'wave': "url(src/assets/wave_background.svg)",
+    })
   },
   plugins: [],
 }
