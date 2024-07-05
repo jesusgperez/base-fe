@@ -24,3 +24,15 @@ export type ModalContinueActionProps = {
   onExit: () => void,
   onContinue: () => void
 }
+
+export type IModalState = {
+  title: string,
+  content: string,
+  open: boolean
+}
+
+export const DefaultModalState: IModalState = {
+  title: '',
+  content: '',
+  open: false
+}

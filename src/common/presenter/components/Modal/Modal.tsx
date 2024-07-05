@@ -26,7 +26,7 @@ const Modal = (
 
   return (
     <div
-      className={`flex bg-gray-300 bg-opacity-30 h-screen w-full ${!open && 'hidden'} items-center justify-center z-50`}
+      className={`absolute top-0 flex bg-gray-500 bg-opacity-30 h-screen w-full ${!open && 'hidden'} items-center justify-center z-50`}
       onClick={onExit}
     >
       <div 
