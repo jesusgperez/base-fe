@@ -1,11 +1,10 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import Component from "./Component"
 import { useLogin } from "../../hooks"
 import AuthContext from "../../contexts/Context"
 import {
-  Modal, ModalTypes, IModalState, DefaultModalState
+  Modal, ModalTypes, DefaultModalState
 } from "../../../../common/presenter/components"
-import { IServerError } from "../../../../common/domain/models"
 
 
 const Presenter = () => {

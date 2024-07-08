@@ -1,2 +1,2 @@
-export * from './useAuth'
-export * from './useLogin'
+export * from './useLogin.hook'
+export * from './useAuth.hook'

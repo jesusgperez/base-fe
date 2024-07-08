@@ -3,7 +3,7 @@ import { IUseLocalStorage } from "../../domain/models/interfaces/IUseLocalStorag
 const useLocalStorage = (): IUseLocalStorage => {
   const getStorage = (key: string) => {
     const value = localStorage.getItem(key)
-    return value ? JSON.stringify(value) : null
+    return value ? JSON.parse(value) : null
   }
 
   const setStorage = (key: string, value: string) => {

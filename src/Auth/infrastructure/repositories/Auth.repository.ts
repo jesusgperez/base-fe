@@ -17,6 +17,7 @@ export class AuthRepository implements IAuthRepository {
 
   //Write async api calls here
   async refreshToken(refreshToken: string): Promise<ITokenEntity> {
+    debugger
     try {
       const response = await this.http.request<ITokenDto>({
         method: HttpMethod.post as Method,  

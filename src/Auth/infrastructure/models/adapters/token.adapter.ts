@@ -4,8 +4,8 @@ import { IDecodedTokenDto, ITokenDto } from "../dto";
 export class TokenAdapter {
   static TokenDtoToTokenEntity(token: ITokenDto): ITokenEntity {
     return {
-      accessToken: token.access,
-      refreshToken: token.refresh,
+      accessToken: token.access ?? "",
+      refreshToken: token.refresh ?? "",
     }
   }
 
@@ -20,14 +20,14 @@ export class TokenAdapter {
     token: IDecodedTokenDto
   ): IDecodedTokenEntity {
     return {
-      exp: token.exp,
-      iat: token.iat,
-      jti: token.jti,
-      userId: token.user_id,
-      firstName: token.first_name,
-      lastName: token.last_name,
-      email: token.email,
-      username: token.username
+      exp: token.exp ?? "",
+      iat: token.iat ?? "",
+      jti: token.jti ?? "",
+      userId: token.user_id ?? "",
+      firstName: token.first_name ?? "",
+      lastName: token.last_name ?? "",
+      email: token.email ?? "",
+      username: token.username ?? ""
     }
   }
 

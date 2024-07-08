@@ -9,6 +9,7 @@ import { GlobalContext } from '../../../common/presenter/contexts/global'
 import AuthContext from '../contexts/Context'
 import { IDecodedTokenDto } from '../../infrastructure/models/dto'
 import { IServerError } from '../../../common/domain/models'
+import { DefaultLoginEntity } from '../../domain/models'
 
 
 const useLogin = () => {
@@ -17,7 +18,7 @@ const useLogin = () => {
   } = useContext(GlobalContext)
 
   const {
-    setModalState
+    setModalState, setLoginData
   } = useContext(AuthContext)
 
   const navigate = useNavigate()
@@ -36,6 +37,8 @@ const useLogin = () => {
         email: decodedData.email,
         username: decodedData.username
       })
+
+      setLoginData(DefaultLoginEntity)
 
       navigate('/home')
       return
