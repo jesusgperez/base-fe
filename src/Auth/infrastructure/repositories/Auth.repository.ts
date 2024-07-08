@@ -25,7 +25,7 @@ export class AuthRepository implements IAuthRepository {
         body: {
           refresh: refreshToken
         },
-        url: `${API_URL}/tkauth/token/refresh/`
+        url: `${API_URL}tkauth/token/refresh/`
       })
 
       return TokenAdapter.TokenDtoToTokenEntity({
@@ -48,7 +48,7 @@ export class AuthRepository implements IAuthRepository {
         headers: {},
         params: {},
         body: {...sendData},
-        url: `${API_URL}/tkauth/token/`
+        url: `${API_URL}tkauth/login/`
       })
 
       return TokenAdapter.TokenDtoToTokenEntity(response)

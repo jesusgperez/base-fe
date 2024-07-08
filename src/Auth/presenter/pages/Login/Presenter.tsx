@@ -9,22 +9,13 @@ import { IServerError } from "../../../../common/domain/models"
 
 
 const Presenter = () => {
-  const [ modalState, setModalState ] = useState<IModalState>(DefaultModalState)
   const { mutateAsync: loginUser } = useLogin()
-  const { loginData } = useContext(AuthContext)
+  const { loginData, modalState, setModalState } = useContext(AuthContext)
 
   const onLogin = () => {
-    try {
-      (async () => await loginUser(loginData))
-    } catch (e: unknown) {
-      const error = e as IServerError
+    const login = async () => await loginUser(loginData)
 
-      setModalState({
-        open: true,
-        title: "Error",
-        content: error.detail
-      })
-    }
+    login()
   }
 
   return (
