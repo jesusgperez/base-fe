@@ -3,7 +3,7 @@ export type ILoginEntity = {
   password: string
 }
 
-export const EmptyLoginEntity = {
+export const DefaultLoginEntity = {
   email: '',
   password: ''
 }

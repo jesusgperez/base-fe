@@ -1,23 +1,19 @@
 import injections from '../injections'
-import { useContext } from 'react'
 import { jwtDecode } from 'jwt-decode'
-import { useNavigate } from 'react-router-dom'
 import { ITokenEntity } from '../../domain/models'
 import { useLocalStorage } from '../../../common/presenter/hooks'
-import { GlobalContext } from '../../../common/presenter/contexts/global'
 import { IDecodedTokenDto } from '../../infrastructure/models/dto'
+import { IUseAuthProps } from '../../domain/models'
 
-const useAuth = async () => {
-  const {
-    setUser
-  } = useContext(GlobalContext)
-  const navigate = useNavigate()
+
+const useAuth = async ({setUser, navigate}: IUseAuthProps) => {
   const useStorage = useLocalStorage()
   const tokenEntity: ITokenEntity | null = useStorage.getStorage('token')
 
   // No token at all
   if (!tokenEntity) {
     navigate('/login')
+    return
   }
 
   if (! tokenEntity!.accessToken || ! tokenEntity!.refreshToken) {
@@ -47,12 +43,11 @@ const useAuth = async () => {
     
     return
   }
-  
+
   try {
     const refreshedToken: ITokenEntity = await injections.
     AuthUseCase.Auth.refreshToken(tokenEntity!.refreshToken);
-    
-    useStorage.setStorage('token', refreshedToken)
+
     const decodedAccessToken: IDecodedTokenDto = jwtDecode(refreshedToken.accessToken)
 
     setUser({
@@ -63,6 +58,7 @@ const useAuth = async () => {
     })
   } catch (e) {
     navigate('/login')
+    return
   }
 }
 

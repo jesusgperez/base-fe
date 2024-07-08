@@ -4,8 +4,8 @@ import { ILoginDto } from "../dto";
 export class LoginAdapter {
   static LoginDtoToLoginEntity(login: ILoginDto): ILoginEntity {
     return {
-      email: login.email,
-      password: login.password,
+      email: login.email ?? "",
+      password: login.password ?? "",
     }
   }
 

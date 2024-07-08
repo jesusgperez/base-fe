@@ -7,3 +7,7 @@ export const EmptyError: IError = {
   hasError: false,
   message: ''
 }
+
+export type IServerError = {
+  detail: string
+}
