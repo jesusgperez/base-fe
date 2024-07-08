@@ -2,15 +2,16 @@ import { useContext } from "react"
 import { LoginProps } from "./models"
 import AuthContext from "../../contexts/Context"
 import { Input, Button } from "../../../../common/presenter/components"
+import { LoginInputTypeValues } from "./models"
 
 const Component = ({onLogin}: LoginProps) => {
   const { loginData, setLoginData } = useContext(AuthContext)
 
   const setValue = (type: string, value: string) => {
-    if (type === 'email') {
+    if (type === LoginInputTypeValues.email) {
       setLoginData({...loginData, email: value})
     }
-    else if (type === 'password') {
+    else if (type === LoginInputTypeValues.password) {
       setLoginData({...loginData, password: value})
     }
   }
@@ -35,14 +36,14 @@ const Component = ({onLogin}: LoginProps) => {
               <Input
                 value={loginData.email}
                 placeholder="Correo Electrónico"
-                setValue={ (value) => setValue('email', value)}
+                setValue={ (value) => setValue(LoginInputTypeValues.email, value)}
                 containerStyles="w-full md:w-3/4"
               />
 
               <Input
                 value={loginData.password}
                 placeholder="Contraseña"
-                setValue={ (value) => setValue('password', value)}
+                setValue={ (value) => setValue(LoginInputTypeValues.password, value)}
                 containerStyles="w-full md:w-3/4"
                 type="password"
               />

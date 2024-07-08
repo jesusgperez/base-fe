@@ -3,11 +3,12 @@ import { ITokenDto } from "../models/dto";
 import { TokenAdapter } from "../models/adapters";
 import { IHttp } from "../../../common/domain/repositories";
 import { IAuthRepository } from "../../domain/repositories";
-import { getEnvironments } from "../../../helpers";
+import { getEnvironments, flatErrors } from "../../../helpers";
 import { Method } from "axios";
 import { HttpMethod } from "../../../common/infrastructure/models/interfaces";
 import { AxiosError } from "axios";
 import { LoginAdapter } from "../models/adapters/login.adapter";
+import { IServerError } from "../../../common/domain/models";
 
 const API_URL = getEnvironments().VITE_API_URL
 
@@ -53,8 +54,16 @@ export class AuthRepository implements IAuthRepository {
       return TokenAdapter.TokenDtoToTokenEntity(response)
     } catch (error: unknown) {
       const err = error as AxiosError
-      const data = err.response!.data
-      throw {message: data}
+      const data = err.response!.data as {[key: string]: string}
+      let throwError: IServerError = {detail: ""}
+
+      if (!data.hasOwnProperty("detail")){
+        throwError = {detail: flatErrors(data)}
+      } else {
+        throwError = data as IServerError
+      }
+
+      throw throwError
     }
   }
 }

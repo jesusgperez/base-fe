@@ -5,6 +5,7 @@ import AuthContext from "../../contexts/Context"
 import {
   Modal, ModalTypes, IModalState, DefaultModalState
 } from "../../../../common/presenter/components"
+import { IServerError } from "../../../../common/domain/models"
 
 
 const Presenter = () => {
@@ -13,7 +14,17 @@ const Presenter = () => {
   const { loginData } = useContext(AuthContext)
 
   const onLogin = () => {
-    setModalState({...modalState, open: true})
+    try {
+      (async () => await loginUser(loginData))
+    } catch (e: unknown) {
+      const error = e as IServerError
+
+      setModalState({
+        open: true,
+        title: "Error",
+        content: error.detail
+      })
+    }
   }
 
   return (
@@ -27,7 +38,7 @@ const Presenter = () => {
         content={modalState.content}
         open={modalState.open}
         type={ModalTypes.base}
-        onExit={() => setModalState({...modalState, open: false})}
+        onExit={() => setModalState(DefaultModalState)}
       />
     </>
   )
