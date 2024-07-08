@@ -7,10 +7,8 @@ import { IUseAuthProps } from '../../domain/models'
 
 
 const useAuth = async ({setUser, navigate}: IUseAuthProps) => {
-  debugger
   const useStorage = useLocalStorage()
   const tokenEntity: ITokenEntity | null = useStorage.getStorage('token')
-
 
   // No token at all
   if (!tokenEntity) {
@@ -45,12 +43,11 @@ const useAuth = async ({setUser, navigate}: IUseAuthProps) => {
     
     return
   }
-  
+
   try {
     const refreshedToken: ITokenEntity = await injections.
     AuthUseCase.Auth.refreshToken(tokenEntity!.refreshToken);
-    
-    useStorage.setStorage('token', refreshedToken)
+
     const decodedAccessToken: IDecodedTokenDto = jwtDecode(refreshedToken.accessToken)
 
     setUser({

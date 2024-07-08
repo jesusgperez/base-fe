@@ -9,6 +9,7 @@ import { HttpMethod } from "../../../common/infrastructure/models/interfaces";
 import { AxiosError } from "axios";
 import { LoginAdapter } from "../models/adapters/login.adapter";
 import { IServerError } from "../../../common/domain/models";
+import { useLocalStorage } from "../../../common/presenter/hooks";
 
 const API_URL = getEnvironments().VITE_API_URL
 
@@ -17,7 +18,8 @@ export class AuthRepository implements IAuthRepository {
 
   //Write async api calls here
   async refreshToken(refreshToken: string): Promise<ITokenEntity> {
-    debugger
+    const storage = useLocalStorage()
+
     try {
       const response = await this.http.request<ITokenDto>({
         method: HttpMethod.post as Method,  
@@ -29,10 +31,14 @@ export class AuthRepository implements IAuthRepository {
         url: `${API_URL}tkauth/token/refresh/`
       })
 
-      return TokenAdapter.TokenDtoToTokenEntity({
+      const token = TokenAdapter.TokenDtoToTokenEntity({
         access: response.access,
         refresh: refreshToken
       })
+
+      storage.setStorage('token', token)
+
+      return token
     } catch (error: unknown) {
       const err = error as AxiosError
       const data = err.response!.data
