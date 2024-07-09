@@ -9,7 +9,6 @@ import { ILoginEntity } from "../../../domain/models"
 
 
 const Presenter = () => {
-
   const { mutateAsync: loginUser } = useLogin()
   const { modalState, setModalState } = useContext(AuthContext)
 
@@ -30,7 +29,7 @@ const Presenter = () => {
         content={modalState.content}
         open={modalState.open}
         type={ModalTypes.base}
-        onExit={() => setModalState(DefaultModalState)}
+        onExit={() => {setModalState(DefaultModalState)}}
       />
     </>
   )
