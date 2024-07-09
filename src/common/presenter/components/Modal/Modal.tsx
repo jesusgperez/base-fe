@@ -20,7 +20,7 @@ const Modal = (
     }
 
     return <ModalExitAction
-      onExit={() => {onExit}}
+      onExit={onExit}
     />
   }
 
