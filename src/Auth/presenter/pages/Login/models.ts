@@ -1,5 +1,7 @@
+import { ILoginEntity } from "../../../domain/models"
+
 export type LoginProps = {
-  onLogin: () => void
+  onLogin: (loginData: ILoginEntity) => void
 }
 
 export const LoginInputTypeValues = {

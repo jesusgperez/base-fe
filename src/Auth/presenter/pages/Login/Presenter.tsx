@@ -6,7 +6,7 @@ import AuthContext from "../../contexts/Context"
 import {
   Modal, ModalTypes, DefaultModalState
 } from "../../../../common/presenter/components"
-import { ITokenEntity } from "../../../domain/models"
+import { ILoginEntity, ITokenEntity } from "../../../domain/models"
 import { jwtDecode } from "jwt-decode"
 import { useNavigate } from "react-router-dom"
 
@@ -16,24 +16,24 @@ const Presenter = () => {
   const navigate = useNavigate()
 
   const { mutateAsync: loginUser } = useLogin()
-  const { loginData, modalState, setModalState } = useContext(AuthContext)
+  const { modalState, setModalState } = useContext(AuthContext)
 
   useEffect(() => {
-    const token: ITokenEntity = storage.getStorage('token')
+    // const token: ITokenEntity = storage.getStorage('token')
 
-    if (!token.refreshToken) {
-      return
-    }
+    // if (!token.refreshToken) {
+    //   return
+    // }
 
-    const decodedToken = jwtDecode(token.refreshToken)
+    // const decodedToken = jwtDecode(token.refreshToken)
 
-    if(Date.now() < decodedToken.exp! * 1000) {
-      navigate('/home')
-      return
-    }
+    // if(Date.now() < decodedToken.exp! * 1000) {
+    //   navigate('/home')
+    //   return
+    // }
   }, [])
 
-  const onLogin = () => {
+  const onLogin = (loginData: ILoginEntity) => {
     const login = async () => await loginUser(loginData)
 
     login()

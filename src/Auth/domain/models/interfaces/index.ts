@@ -1,1 +1,1 @@
-export * from './IAutheticate.interface'
+export * from './IUseAuth.interface'
