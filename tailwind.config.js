@@ -12,6 +12,9 @@ export default {
         terciary: "#F1A23A",
         cuaternary: '#ED762F',
         selection: "#166bac"
+      },
+      fontSize: {
+        '2xs': '0.625rem'
       }
     },
     backgroundImage: (theme) => ({

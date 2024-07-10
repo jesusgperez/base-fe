@@ -37,49 +37,49 @@ const Component = ({onLogin}: LoginProps) => {
           <div
             className="flex flex-col justify-center items-center w-full h-1/2 bg-gray space-y-5 px-5 md:px-10"
           >
-              <Controller
-                name="email"
-                control={control}
-                rules={{required: true}}
-                render={({field: {onChange, value}}) => (
-                  <Input
-                    value={value}
-                    placeholder="Correo Electrónico"
-                    setValue={onChange}
-                    errors={{
-                      hasError: errors.email ? true : false,
-                      message: errors.email?.message || ''
-                    }}
-                    containerStyles="w-full md:w-3/4"
-                  />
-                )}
-              />
-
-              <Controller
-                name="password"
-                control={control}
-                rules={{required: true}}
-                render={({field: {onChange, value}}) => (
-                  <Input
+            <Controller
+              name="email"
+              control={control}
+              rules={{required: true}}
+              render={({field: {onChange, value}}) => (
+                <Input
                   value={value}
-                  placeholder="Contraseña"
+                  placeholder="Correo Electrónico"
                   setValue={onChange}
                   errors={{
-                    hasError: errors.password ? true : false,
-                    message: errors.password?.message || ''
+                    hasError: errors.email ? true : false,
+                    message: errors.email?.message || ''
                   }}
-                    containerStyles="w-full md:w-3/4"
-                    type="password"
-                  />
-                )}
-              />
+                  containerStyles="w-full md:w-3/4"
+                />
+              )}
+            />
 
-              <Button
-                text="Ingresar"
-                onClick={handleSubmit(onLogin)}
-                customStyles="bg-blue-400"
-                enabled={isValid}
-              />
+            <Controller
+              name="password"
+              control={control}
+              rules={{required: true}}
+              render={({field: {onChange, value}}) => (
+                <Input
+                value={value}
+                placeholder="Contraseña"
+                setValue={onChange}
+                errors={{
+                  hasError: errors.password ? true : false,
+                  message: errors.password?.message || ''
+                }}
+                  containerStyles="w-full md:w-3/4"
+                  type="password"
+                />
+              )}
+            />
+
+            <Button
+              text="Ingresar"
+              onClick={handleSubmit(onLogin)}
+              customStyles="bg-blue-400"
+              enabled={isValid}
+            />
           </div>
 
           <div
