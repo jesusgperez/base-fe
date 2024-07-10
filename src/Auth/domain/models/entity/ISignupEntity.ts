@@ -5,3 +5,11 @@ export type ISignupEntity = {
   password: string,
   passwordRepeat: string
 }
+
+export const DefaultSignupEntity: ISignupEntity = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  passwordRepeat: ""
+}
