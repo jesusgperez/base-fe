@@ -1,6 +1,6 @@
 import { ILoginEntity, ISignupEntity, ITokenEntity } from "../../domain/models";
 import { ISignupDto, ITokenDto } from "../models/dto";
-import { TokenAdapter, SignupAdapter, LoginAdapter } from "../models/adapters";
+import { TokenAdapter, SignupAdapter, LoginAdapter } from "../models";
 import { IHttp } from "../../../common/domain/repositories";
 import { IAuthRepository } from "../../domain/repositories";
 import { getEnvironments } from "../../../helpers";
