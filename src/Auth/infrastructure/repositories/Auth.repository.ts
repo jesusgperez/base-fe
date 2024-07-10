@@ -1,17 +1,17 @@
-import { ILoginEntity, ITokenEntity } from "../../domain/models";
-import { ITokenDto } from "../models/dto";
-import { TokenAdapter } from "../models/adapters";
+import { ILoginEntity, ISignupEntity, ITokenEntity } from "../../domain/models";
+import { ISignupDto, ITokenDto } from "../models/dto";
+import { TokenAdapter, SignupAdapter, LoginAdapter } from "../models/adapters";
 import { IHttp } from "../../../common/domain/repositories";
 import { IAuthRepository } from "../../domain/repositories";
-import { getEnvironments, flatErrors } from "../../../helpers";
+import { getEnvironments } from "../../../helpers";
 import { Method } from "axios";
 import { HttpMethod } from "../../../common/infrastructure/models/interfaces";
 import { AxiosError } from "axios";
-import { LoginAdapter } from "../models/adapters/login.adapter";
-import { IServerError } from "../../../common/domain/models";
 import { useLocalStorage } from "../../../common/presenter/hooks";
+import { handleApiErrors } from "../../../helpers";
 
 const API_URL = getEnvironments().VITE_API_URL
+
 
 export class AuthRepository implements IAuthRepository {
   constructor(readonly http: IHttp) {}
@@ -60,17 +60,23 @@ export class AuthRepository implements IAuthRepository {
 
       return TokenAdapter.TokenDtoToTokenEntity(response)
     } catch (error: unknown) {
-      const err = error as AxiosError
-      const data = err.response!.data as {[key: string]: string}
-      let throwError: IServerError = {detail: ""}
+      throw handleApiErrors(error)
+    }
+  }
 
-      if (!data.hasOwnProperty("detail")){
-        throwError = {detail: flatErrors(data)}
-      } else {
-        throwError = data as IServerError
-      }
+  async signupUser(signupData: ISignupEntity): Promise<ISignupEntity> {
+    try {
+      const response = await this.http.request<ISignupDto>({
+        method: HttpMethod.post as Method,  
+        headers: {},
+        params: {},
+        body: SignupAdapter.SignupEntityToSignupDto(signupData),
+        url: `${API_URL}tkauth/signup/`
+      })
 
-      throw throwError
+      return SignupAdapter.SignupDtoToSignupEntity(response)
+    } catch (error: unknown) {
+      throw handleApiErrors(error)
     }
   }
 }
