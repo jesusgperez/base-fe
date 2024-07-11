@@ -7,20 +7,13 @@ import { ILoginEntity, ITokenEntity } from '../../domain/models'
 import { useLocalStorage } from '../../../common/presenter/hooks'
 import { GlobalContext } from '../../../common/presenter/contexts/global'
 import AuthContext from '../contexts/Context'
-import { IDecodedTokenDto } from '../../infrastructure/models/dto'
+import { IDecodedTokenDto } from '../../infrastructure/models'
 import { IServerError } from '../../../common/domain/models'
-import { DefaultLoginEntity } from '../../domain/models'
 
 
 const useLogin = () => {
-  const {
-    setUser
-  } = useContext(GlobalContext)
-
-  const {
-    setModalState, setLoginData
-  } = useContext(AuthContext)
-
+  const { setUser } = useContext(GlobalContext)
+  const { setModalState } = useContext(AuthContext)
   const navigate = useNavigate()
 
   return useMutation<ITokenEntity, Error, ILoginEntity>({
@@ -37,8 +30,6 @@ const useLogin = () => {
         email: decodedData.email,
         username: decodedData.username
       })
-
-      setLoginData(DefaultLoginEntity)
 
       navigate('/home')
       return

@@ -2,7 +2,7 @@ import injections from '../injections'
 import { jwtDecode } from 'jwt-decode'
 import { ITokenEntity } from '../../domain/models'
 import { useLocalStorage } from '../../../common/presenter/hooks'
-import { IDecodedTokenDto } from '../../infrastructure/models/dto'
+import { IDecodedTokenDto } from '../../infrastructure/models'
 import { IUseAuthProps } from '../../domain/models'
 
 
