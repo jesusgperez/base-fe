@@ -4,6 +4,7 @@ import { ITokenEntity } from '../../domain/models'
 import { useLocalStorage } from '../../../common/presenter/hooks'
 import { IDecodedTokenDto } from '../../infrastructure/models'
 import { IUseAuthProps } from '../../domain/models'
+import { AuthUrls } from '../pages/AuthUrls'
 
 
 const useAuth = async ({setUser, navigate}: IUseAuthProps) => {
@@ -12,12 +13,12 @@ const useAuth = async ({setUser, navigate}: IUseAuthProps) => {
 
   // No token at all
   if (!tokenEntity) {
-    navigate('/login')
+    navigate(AuthUrls.login)
     return
   }
 
   if (! tokenEntity!.accessToken || ! tokenEntity!.refreshToken) {
-    navigate('/login')
+    navigate(AuthUrls.login)
     return
   }
 
@@ -26,7 +27,7 @@ const useAuth = async ({setUser, navigate}: IUseAuthProps) => {
   // Expired refresh token
   if (!decodedRefreshToken || 
       Date.now() > decodedRefreshToken.exp! * 1000) {
-    navigate('/login')
+    navigate(AuthUrls.login)
     return
   }
 
@@ -57,7 +58,7 @@ const useAuth = async ({setUser, navigate}: IUseAuthProps) => {
       username: decodedAccessToken.username
     })
   } catch (e) {
-    navigate('/login')
+    navigate(AuthUrls.login)
     return
   }
 }

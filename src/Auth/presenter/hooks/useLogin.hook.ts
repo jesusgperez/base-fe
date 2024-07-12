@@ -9,6 +9,7 @@ import { GlobalContext } from '../../../common/presenter/contexts/global'
 import AuthContext from '../contexts/Context'
 import { IDecodedTokenDto } from '../../infrastructure/models'
 import { IServerError } from '../../../common/domain/models'
+import { AuthUrls } from '../pages/AuthUrls'
 
 
 const useLogin = () => {
@@ -31,7 +32,7 @@ const useLogin = () => {
         username: decodedData.username
       })
 
-      navigate('/home')
+      navigate(AuthUrls.home)
       return
     },
     onError: (e: unknown) => {

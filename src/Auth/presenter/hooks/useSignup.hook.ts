@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 import { useMutation } from '@tanstack/react-query'
 import { ISignupEntity } from '../../domain/models'
 import { IServerError } from '../../../common/domain/models'
+import { AuthUrls } from '../pages/AuthUrls'
 
 
 const useSignup = () => {
@@ -22,7 +23,7 @@ const useSignup = () => {
         content: `Usuario ${data.firstName} ${data.lastName} has sido creado correctamente`,
         open: true
       })
-      navigate('/login')
+      navigate(AuthUrls.login)
     },
     onError: (e: unknown) => {
       const error = e as IServerError

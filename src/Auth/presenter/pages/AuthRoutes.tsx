@@ -5,17 +5,19 @@ import Signup from "./Signup";
 import RetrievePassword from "./RetrievePassword";
 import Home from "./Home";
 import AuthProvider from "../contexts/Provider";
+import { AuthUrls } from "./AuthUrls";
+
 
 const AuthRoutes = () => {
   return (
     <AuthProvider>
       <Routes>
           <Route path='/' element={<Navigate to='/login'/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/signup' element={<Signup/>}/>
-          <Route path='/retrieve-password' element={<RetrievePassword />}/>
-          <Route path='/change-password' element={<h1>Change your password</h1>}/>
-          <Route path='/home' element={<Home />}/>
+          <Route path={AuthUrls.login} element={<Login/>}/>
+          <Route path={AuthUrls.signup} element={<Signup/>}/>
+          <Route path={AuthUrls.retrievePassword} element={<RetrievePassword />}/>
+          <Route path={AuthUrls.changePassword} element={<h1>Change your password</h1>}/>
+          <Route path={AuthUrls.home} element={<Home />}/>
       </Routes>
     </AuthProvider>
   )
