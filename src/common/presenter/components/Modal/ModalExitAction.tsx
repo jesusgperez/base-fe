@@ -7,7 +7,7 @@ const ModalExitAction = ({onExit}:ModalExitActionProps) => {
       <Button
         text="Salir"
         onClick={onExit}
-        customStyles="bg-red-500"
+        customStyles="bg-blue-500"
       />
     </div>
   )
