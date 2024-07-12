@@ -10,7 +10,7 @@ const Presenter = () => {
   const { mutateAsync: signupUser } = useSignup()
   const { modalState, setModalState } = useContext(AuthContext)
 
-  const onSignup = (signupData:ISignupEntity) => {
+  const onSignup = (signupData: ISignupEntity) => {
     const signup = async () => await signupUser(signupData)
 
     signup()
