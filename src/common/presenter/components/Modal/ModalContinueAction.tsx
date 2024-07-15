@@ -14,7 +14,7 @@ const ModalContinueAction = (
       <Button
         text="Continuar"
         onClick={onContinue}
-        customStyles="bg-blue-400 w-full md:w-1/3"
+        customStyles="bg-green-400 w-full md:w-1/3"
       />
     </div>
   )

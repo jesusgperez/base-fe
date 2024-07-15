@@ -5,6 +5,7 @@ import { DefaultLoginEntity, ILoginEntity } from "../../../domain/models"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { loginSchemeValidator } from "../../validators"
 import { AuthBackgroundLayout } from "../../layouts"
+import { AuthUrls } from "../AuthUrls"
 
 
 const Component = ({onLogin}: LoginProps) => {
@@ -87,7 +88,7 @@ const Component = ({onLogin}: LoginProps) => {
           >
             <p>¿Olvidaste tu contraseña?</p>
             <a
-              href="/forgot-password"
+              href={AuthUrls.retrievePassword}
               className="text-blue-900 underline"
             >
               Haz click aquí para recuperarla
