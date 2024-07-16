@@ -2,22 +2,22 @@ import { ISignupEntity } from "../../../domain/models";
 import { ISignupDto } from "../dto";
 
 export class SignupAdapter {
-  static SignupDtoToSignupEntity(signup: ISignupDto): ISignupEntity {
+  static SignupDtoToSignupEntity(data: ISignupDto): ISignupEntity {
     return {
-      firstName: signup.first_name ?? "",
-      lastName: signup.last_name ?? "",
-      email: signup.email ?? "",
-      password: signup.password ?? "",
+      firstName: data.first_name ?? "",
+      lastName: data.last_name ?? "",
+      email: data.email ?? "",
+      password: data.password ?? "",
       passwordRepeat: ""
     }
   }
 
-  static SignupEntityToSignupDto(signup: ISignupEntity): ISignupDto {
+  static SignupEntityToSignupDto(data: ISignupEntity): ISignupDto {
     return {
-      first_name: signup.firstName,
-      last_name: signup.lastName,
-      email: signup.email,
-      password: signup.password,
+      first_name: data.firstName,
+      last_name: data.lastName,
+      email: data.email,
+      password: data.password,
     }
   }
 }

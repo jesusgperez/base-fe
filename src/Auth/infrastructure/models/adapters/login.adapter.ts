@@ -2,17 +2,17 @@ import { ILoginEntity } from "../../../domain/models";
 import { ILoginDto } from "../dto";
 
 export class LoginAdapter {
-  static LoginDtoToLoginEntity(login: ILoginDto): ILoginEntity {
+  static LoginDtoToLoginEntity(data: ILoginDto): ILoginEntity {
     return {
-      email: login.email ?? "",
-      password: login.password ?? "",
+      email: data.email ?? "",
+      password: data.password ?? "",
     }
   }
 
-  static LoginEntityToLoginDto(login: ILoginEntity): ILoginDto {
+  static LoginEntityToLoginDto(data: ILoginEntity): ILoginDto {
     return {
-      email: login.email,
-      password: login.password,
+      email: data.email,
+      password: data.password,
     }
   }
 }
