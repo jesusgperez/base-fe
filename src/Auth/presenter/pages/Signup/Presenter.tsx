@@ -1,7 +1,7 @@
 import Component from "./Component";
 import { useContext } from "react";
 import AuthContext from "../../contexts/Context";
-import { useSignup } from "../../hooks/useSignup.hook";
+import { useSignup } from "../../hooks";
 import { Modal, ModalTypes, DefaultModalState } from "../../../../common/presenter/components";
 import { ISignupEntity } from "../../../domain/models";
 
