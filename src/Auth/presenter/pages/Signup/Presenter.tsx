@@ -21,13 +21,14 @@ const Presenter = () => {
       <Component
         onSignup={onSignup}
       />
+
       <Modal
         title={modalState.title}
         content={modalState.content}
         open={modalState.open}
         type={ModalTypes.base}
         onExit={() => {setModalState(DefaultModalState)}}
-    />
+      />
     </>
   )
 }
