@@ -1,6 +1,6 @@
-import { ILoginEntity, ISignupEntity, ITokenEntity } from "../../domain/models";
+import { ILoginEntity, IRetrieveEntity, ISignupEntity, ITokenEntity } from "../../domain/models";
 import { ISignupDto, ITokenDto } from "../models/dto";
-import { TokenAdapter, SignupAdapter, LoginAdapter } from "../models";
+import { TokenAdapter, SignupAdapter, LoginAdapter, RetrieveAdapter } from "../models";
 import { IHttp } from "../../../common/domain/repositories";
 import { IAuthRepository } from "../../domain/repositories";
 import { getEnvironments } from "../../../helpers";
@@ -75,6 +75,20 @@ export class AuthRepository implements IAuthRepository {
       })
 
       return SignupAdapter.SignupDtoToSignupEntity(response)
+    } catch (error: unknown) {
+      throw handleApiErrors(error)
+    }
+  }
+
+  async retrievePassword(retrieveData: IRetrieveEntity): Promise<void> {
+    try {
+      await this.http.request<null>({
+        method: HttpMethod.post as Method,  
+        headers: {},
+        params: {},
+        body: RetrieveAdapter.RetrieveEntityToRetrieveDto(retrieveData),
+        url: `${API_URL}tkauth/signup/`
+      })
     } catch (error: unknown) {
       throw handleApiErrors(error)
     }
