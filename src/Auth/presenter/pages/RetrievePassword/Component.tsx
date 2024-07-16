@@ -1,10 +1,15 @@
+import { AuthBackgroundLayout, AuthForm } from "../../layouts"
 import { RetrievePasswordProps } from "./models"
 
-const Component = ({}: RetrievePasswordProps) => {
+const Component = ({onRetrieve}: RetrievePasswordProps) => {
   return (
-    <>
-      <p>Hello world</p>
-    </>
+    <AuthBackgroundLayout>
+      <AuthForm
+        onSubmit={() => {}}
+      >
+        <></>
+      </AuthForm>
+    </AuthBackgroundLayout>
   )
 }
 
