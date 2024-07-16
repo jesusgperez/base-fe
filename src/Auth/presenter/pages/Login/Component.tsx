@@ -79,16 +79,30 @@ const Component = ({onLogin}: LoginProps) => {
           />
         </div>
 
-        <div
-          className="flex flex-col text-sm justify-center items-center h-1/4 w-full space-y-1 py-1"
-        >
-          <p>¿Olvidaste tu contraseña?</p>
-          <a
-            href={AuthUrls.retrievePassword}
-            className="text-blue-900 underline"
+        <div className="flex flex-col h-1/4 w-full md:flex-row">
+          <div
+            className="flex flex-col text-sm justify-center items-center w-full space-y-1 py-1"
           >
-            Haz click aquí para recuperarla
-          </a>
+            <p className="font-bold">¡Regístrate!</p>
+            <a
+              href={AuthUrls.signup}
+              className="text-blue-900 underline"
+            >
+              Haz click aquí para registrarte
+            </a>
+          </div>
+
+          <div
+            className="flex flex-col text-sm justify-center items-center w-full space-y-1 py-1"
+          >
+            <p className="font-bold">¿Olvidaste tu contraseña?</p>
+            <a
+              href={AuthUrls.retrievePassword}
+              className="text-blue-900 underline"
+            >
+              Haz click aquí para recuperarla
+            </a>
+          </div>
         </div>
       </AuthForm>
     </AuthBackgroundLayout>

@@ -19,7 +19,7 @@ const useRetrieve = () => {
     onSuccess: () => {
       setModalState({
         title: "Éxito",
-        content: "Se ha enviado un correo para recuperar la contraseña",
+        content: "En caso de existir la cuenta, se ha enviado un correo para recuperar la contraseña",
         open: true
       })
 
@@ -28,7 +28,7 @@ const useRetrieve = () => {
     onError: () => {
       setModalState({
         title: "Éxito",
-        content: "Se ha enviado un correo para recuperar la contraseña",
+        content: "En caso de existir la cuenta, se ha enviado un correo para recuperar la contraseña",
         open: true
       })
 
