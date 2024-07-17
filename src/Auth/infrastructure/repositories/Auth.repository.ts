@@ -87,7 +87,7 @@ export class AuthRepository implements IAuthRepository {
         headers: {},
         params: {},
         body: RetrieveAdapter.RetrieveEntityToRetrieveDto(retrieveData),
-        url: `${API_URL}tkauth/signup/`
+        url: `${API_URL}tkauth/password/retrieve/`
       })
     } catch (error: unknown) {
       throw handleApiErrors(error)

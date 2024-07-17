@@ -86,7 +86,7 @@ const Component = ({onLogin}: LoginProps) => {
             <p className="font-bold">¡Regístrate!</p>
             <a
               href={AuthUrls.signup}
-              className="text-blue-900 underline"
+              className="text-blue-900 hover:underline"
             >
               Haz click aquí para registrarte
             </a>
@@ -98,7 +98,7 @@ const Component = ({onLogin}: LoginProps) => {
             <p className="font-bold">¿Olvidaste tu contraseña?</p>
             <a
               href={AuthUrls.retrievePassword}
-              className="text-blue-900 underline"
+              className="text-blue-900 hover:underline"
             >
               Haz click aquí para recuperarla
             </a>
