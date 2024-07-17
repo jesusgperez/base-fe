@@ -3,3 +3,9 @@ export type IChangeEntity = {
   password: string,
   passwordRepeat: string
 }
+
+export const DefaultChangeEntity: IChangeEntity = {
+  code: "",
+  password: "",
+  passwordRepeat: ""
+}
