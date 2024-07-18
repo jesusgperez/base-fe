@@ -21,7 +21,7 @@ const AuthRoutes = () => {
             element={<RetrievePassword />}
           />
           <Route
-            path={`${urls.changePassword}/:encrypted`}
+            path={urls.changePassword}
             element={<ChangePassword />}
           />
           <Route path={urls.home} element={<Home />}/>

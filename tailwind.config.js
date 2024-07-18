@@ -18,7 +18,7 @@ export default {
       }
     },
     backgroundImage: (theme) => ({
-      'wave': "url(src/assets/wave_background.svg)",
+      'wave': "url(/src/assets/wave_background.svg)",
     })
   },
   plugins: [],
