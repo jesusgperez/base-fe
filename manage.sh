@@ -44,7 +44,7 @@ create_app(){
 
   echo "Creating app $app_name"
 
-  structure_dir=./$root_dir/structure
+  structure_dir=./$root_dir/.structure
   app_dir=./$root_dir/$app_name
 
   cp -r $structure_dir $app_dir
