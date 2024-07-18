@@ -17,7 +17,7 @@ const useChange = () => {
   } = useContext(AuthContext)
 
   return useMutation<IChangeEntity, Error, IChangeEntity>({
-    mutationFn: (data) => injections.AuthUseCase.Auth.changePassword(data, params.encrypted!),
+    mutationFn: (data) => injections.AuthUseCase.changePassword(data, params.encrypted!),
     onSuccess: () => {
       setModalState({
         title: "Éxito",

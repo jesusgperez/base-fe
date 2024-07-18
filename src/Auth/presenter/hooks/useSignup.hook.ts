@@ -16,7 +16,7 @@ const useSignup = () => {
   } = useContext(AuthContext)
 
   return useMutation<ISignupEntity, Error, ISignupEntity>({
-    mutationFn: (data) => injections.AuthUseCase.Auth.signupUser(data),
+    mutationFn: (data) => injections.AuthUseCase.signupUser(data),
     onSuccess: (data) => {
       setModalState({
         title: "¡Éxito!",

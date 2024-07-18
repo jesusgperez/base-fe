@@ -15,7 +15,7 @@ const useRetrieve = () => {
   } = useContext(AuthContext)
 
   return useMutation<void, Error, IRetrieveEntity>({
-    mutationFn: (data) => injections.AuthUseCase.Auth.retrievePassword(data),
+    mutationFn: (data) => injections.AuthUseCase.retrievePassword(data),
     onSuccess: () => {
       setModalState({
         title: "Éxito",
