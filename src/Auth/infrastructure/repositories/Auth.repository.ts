@@ -97,11 +97,11 @@ export class AuthRepository implements IAuthRepository {
   async changePassword(changeData: IChangeEntity, encryption: string): Promise<IChangeEntity> {
     try {
       const response = await this.http.request<IChangeDto>({
-        method: HttpMethod.post as Method,  
+        method: HttpMethod.put as Method,  
         headers: {},
         params: {},
         body: ChangeAdapter.ChangeEntityToChangeDto(changeData),
-        url: `${API_URL}tkauth/password/change/${encryption}`
+        url: `${API_URL}tkauth/password/change/${encryption}/`
       })
 
       return ChangeAdapter.ChangeDtoToChangeEntity(response)
