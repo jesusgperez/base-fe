@@ -6,6 +6,7 @@ import { retrieveSchemeValidator } from "../../validators"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { DefaultRetrieveEntity } from "../../../domain/models"
 import { Input, Button } from "../../../../common/presenter/components"
+import { AuthTitle } from "../../components"
 
 
 const Component = ({onRetrieve}: RetrievePasswordProps) => {
@@ -27,15 +28,10 @@ const Component = ({onRetrieve}: RetrievePasswordProps) => {
         <div
           className="flex flex-col justify-center items-center w-full h-full space-y-10 md:space-y-16 px-5 md:px-10"
         >
-          <div className="flex flex-col justify-center items-center space-y-5">
-            <h1 className="text-2xl font-bold">
-              Recuperar contraseña            
-            </h1>
-
-            <p>
-              Escribe tu correo electrónico y te enviaremos los pasos para recuperar tu contraseña
-            </p>
-          </div>
+          <AuthTitle
+            title="Recuperar contraseña"
+            content="Escribe tu correo electrónico y te enviaremos los pasos para recuperar tu contraseña"
+          />
 
           <div
             className="flex flex-col justify-center items-center space-y-5 w-full"

@@ -7,6 +7,7 @@ import { IChangeEntity } from "../../../domain/models"
 import { DefaultChangeEntity } from "../../../domain/models"
 import { changeSchemeValidator } from "../../validators"
 import { Input, Button } from "../../../../common/presenter/components"
+import { AuthTitle } from "../../components"
 
 
 const Component = ({onChange}: ChangePasswordProps) => {
@@ -29,15 +30,10 @@ const Component = ({onChange}: ChangePasswordProps) => {
         <div
           className="flex flex-col justify-center items-center w-full h-full space-y-10 md:space-y-16 px-5 md:px-10"
         >
-          <div className="flex flex-col justify-center items-center space-y-5">
-            <h1 className="text-2xl font-bold">
-              Cambiar contraseña            
-            </h1>
-
-            <p>
-              Escribe el código que te enviamos al correo y tu contraseña nueva
-            </p>
-          </div>
+          <AuthTitle
+            title="Cambiar contraseña"
+            content="Escribe el código que te enviamos al correo y tu contraseña nueva"
+          />
 
           <div
             className="flex flex-col justify-center items-center space-y-5 w-full"
