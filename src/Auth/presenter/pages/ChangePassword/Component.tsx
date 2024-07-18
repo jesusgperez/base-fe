@@ -70,6 +70,7 @@ const Component = ({onChange}: ChangePasswordProps) => {
                     message: errors.password?.message || ''
                   }}
                   containerStyles="w-full md:w-3/4"
+                  type="password"
                 />
               )}
             />
@@ -84,10 +85,11 @@ const Component = ({onChange}: ChangePasswordProps) => {
                   placeholder="Repetir Contraseña"
                   setValue={onChange}
                   errors={{
-                    hasError: errors.password ? true : false,
-                    message: errors.password?.message || ''
+                    hasError: errors.passwordRepeat ? true : false,
+                    message: errors.passwordRepeat?.message || ''
                   }}
                   containerStyles="w-full md:w-3/4"
+                  type="password"
                 />
               )}
             />

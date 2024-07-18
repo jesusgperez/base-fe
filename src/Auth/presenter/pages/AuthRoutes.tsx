@@ -16,8 +16,14 @@ const AuthRoutes = () => {
           <Route path='/' element={<Navigate to='/login'/>}/>
           <Route path={urls.login} element={<Login/>}/>
           <Route path={urls.signup} element={<Signup/>}/>
-          <Route path={urls.retrievePassword} element={<RetrievePassword />}/>
-          <Route path={urls.changePassword} element={<ChangePassword />}/>
+          <Route
+            path={urls.retrievePassword}
+            element={<RetrievePassword />}
+          />
+          <Route
+            path={`${urls.changePassword}/:encrypted`}
+            element={<ChangePassword />}
+          />
           <Route path={urls.home} element={<Home />}/>
       </Routes>
     </AuthProvider>
