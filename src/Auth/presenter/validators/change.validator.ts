@@ -2,7 +2,7 @@ import * as yup from 'yup'
 
 export const changeSchemeValidator = yup.object().shape({
   code: yup.string()
-  .required('Email is required'),
+  .required('Code is required'),
   password: yup
   .string()
   .required('Password is required')
