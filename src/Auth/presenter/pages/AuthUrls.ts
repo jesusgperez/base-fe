@@ -3,5 +3,5 @@ export const AuthUrls = {
   login: '/login',
   signup: '/signup',
   retrievePassword: '/retrieve-password',
-  changePassword: '/change-password'
+  changePassword: '/change-password/:encrypted'
 }

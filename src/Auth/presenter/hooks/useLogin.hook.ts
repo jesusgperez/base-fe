@@ -18,7 +18,7 @@ const useLogin = () => {
   const navigate = useNavigate()
 
   return useMutation<ITokenEntity, Error, ILoginEntity>({
-    mutationFn: (data) => injections.AuthUseCase.Auth.loginUser(data),
+    mutationFn: (data) => injections.AuthUseCase.loginUser(data),
     onSuccess: (data) => {
       const storage = useLocalStorage()
       storage.setStorage('token', data)

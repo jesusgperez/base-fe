@@ -15,11 +15,11 @@ const useRetrieve = () => {
   } = useContext(AuthContext)
 
   return useMutation<void, Error, IRetrieveEntity>({
-    mutationFn: (data) => injections.AuthUseCase.Auth.retrievePassword(data),
+    mutationFn: (data) => injections.AuthUseCase.retrievePassword(data),
     onSuccess: () => {
       setModalState({
         title: "Éxito",
-        content: "En caso de existir la cuenta, se ha enviado un correo para recuperar la contraseña",
+        content: "En caso de existir la cuenta, se ha enviado un correo para recuperar la contraseña, tienes 5 minutos de validez",
         open: true
       })
 

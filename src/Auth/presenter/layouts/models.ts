@@ -6,5 +6,6 @@ export type AuthBackgroundLayoutProps = {
 
 export type AuthFormProps = {
   onSubmit: () => void,
-  children: ReactNode
+  children: ReactNode,
+  customStyles?: string
 }

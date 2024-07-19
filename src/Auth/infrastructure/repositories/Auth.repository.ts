@@ -1,6 +1,6 @@
-import { ILoginEntity, IRetrieveEntity, ISignupEntity, ITokenEntity } from "../../domain/models";
-import { ISignupDto, ITokenDto } from "../models/dto";
-import { TokenAdapter, SignupAdapter, LoginAdapter, RetrieveAdapter } from "../models";
+import { IChangeEntity, ILoginEntity, IRetrieveEntity, ISignupEntity, ITokenEntity } from "../../domain/models";
+import { IChangeDto, ISignupDto, ITokenDto } from "../models/dto";
+import { TokenAdapter, SignupAdapter, LoginAdapter, RetrieveAdapter, ChangeAdapter } from "../models";
 import { IHttp } from "../../../common/domain/repositories";
 import { IAuthRepository } from "../../domain/repositories";
 import { getEnvironments } from "../../../helpers";
@@ -89,6 +89,22 @@ export class AuthRepository implements IAuthRepository {
         body: RetrieveAdapter.RetrieveEntityToRetrieveDto(retrieveData),
         url: `${API_URL}tkauth/password/retrieve/`
       })
+    } catch (error: unknown) {
+      throw handleApiErrors(error)
+    }
+  }
+
+  async changePassword(changeData: IChangeEntity, encryption: string): Promise<IChangeEntity> {
+    try {
+      const response = await this.http.request<IChangeDto>({
+        method: HttpMethod.put as Method,  
+        headers: {},
+        params: {},
+        body: ChangeAdapter.ChangeEntityToChangeDto(changeData),
+        url: `${API_URL}tkauth/password/change/${encryption}/`
+      })
+
+      return ChangeAdapter.ChangeDtoToChangeEntity(response)
     } catch (error: unknown) {
       throw handleApiErrors(error)
     }

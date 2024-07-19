@@ -47,7 +47,7 @@ const useAuth = async ({setUser, navigate}: IUseAuthProps) => {
 
   try {
     const refreshedToken: ITokenEntity = await injections.
-    AuthUseCase.Auth.refreshToken(tokenEntity!.refreshToken);
+    AuthUseCase.refreshToken(tokenEntity!.refreshToken);
 
     const decodedAccessToken: IDecodedTokenDto = jwtDecode(refreshedToken.accessToken)
 
